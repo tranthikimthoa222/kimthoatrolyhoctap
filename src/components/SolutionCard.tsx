@@ -1,6 +1,7 @@
 import { Check, Volume2, Sparkles } from 'lucide-react';
 import { SolutionResponse } from '../services/gemini';
 import { motion } from 'motion/react';
+import MathContent from './MathContent';
 
 interface SolutionCardProps {
   solution: SolutionResponse;
@@ -36,8 +37,8 @@ export default function SolutionCard({ solution, onSpeak, isSpeaking, onReset }:
           <button
             onClick={onSpeak}
             className={`clay-btn !py-2 !px-4 !min-h-0 flex items-center gap-2 text-sm cursor-pointer ${isSpeaking
-                ? 'clay-btn-primary'
-                : 'clay-btn-ghost'
+              ? 'clay-btn-primary'
+              : 'clay-btn-ghost'
               }`}
             aria-label={isSpeaking ? 'Dừng đọc' : 'Nghe lời giảng'}
           >
@@ -63,11 +64,12 @@ export default function SolutionCard({ solution, onSpeak, isSpeaking, onReset }:
               </div>
               {/* Step Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="font-extrabold text-slate-800 text-[15px] mb-1">{step.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line bg-slate-50 p-3 rounded-2xl border-2 border-slate-100"
-                  style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)' }}>
-                  {step.content}
-                </p>
+                <MathContent tag="div" className="font-extrabold text-slate-800 text-[15px] mb-1">{step.title}</MathContent>
+                <MathContent
+                  className="text-slate-600 text-sm leading-relaxed whitespace-pre-line bg-slate-50 p-3 rounded-2xl border-2 border-slate-100"
+                  tag="div"
+                  style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)' }}
+                >{step.content}</MathContent>
               </div>
             </motion.div>
           ))}
@@ -78,9 +80,9 @@ export default function SolutionCard({ solution, onSpeak, isSpeaking, onReset }:
           <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider mb-2">Kết quả:</h3>
           <div className="bg-blue-50 p-4 rounded-2xl border-3 border-blue-200 text-center"
             style={{ boxShadow: 'inset 0 2px 4px rgba(37,99,235,0.06), 4px 4px 8px rgba(37,99,235,0.08)' }}>
-            <p className="text-blue-700 font-extrabold text-lg break-words">
+            <MathContent tag="div" className="text-blue-700 font-extrabold text-lg break-words">
               {solution.final_answer}
-            </p>
+            </MathContent>
           </div>
         </div>
       </motion.div>

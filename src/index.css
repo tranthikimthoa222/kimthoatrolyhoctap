@@ -229,3 +229,16 @@ body {
 .prose li {
   margin-bottom: 0.4em;
 }
+
+/* MathJax rendering */
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  font-size: 110% !important;
+}
+
+mjx-container[display="true"] {
+  margin: 0.6em 0 !important;
+  padding: 0.3em 0;
+}
