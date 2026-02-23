@@ -7,6 +7,7 @@ interface UploadSectionProps {
 
 export default function UploadSection({ onImageSelect }: UploadSectionProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -15,31 +16,33 @@ export default function UploadSection({ onImageSelect }: UploadSectionProps) {
   };
 
   return (
-    <div className="bg-white/70 backdrop-blur-xl rounded-[2.5rem] shadow-2xl p-8 text-center border border-white/60 relative overflow-hidden group/container transition-all hover:shadow-blue-500/10">
-      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 opacity-80"></div>
+    <div className="clay-card p-6 text-center relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-t-[24px]"></div>
 
-      <h2 className="text-2xl font-extrabold text-slate-800 mb-2 mt-2">Chụp ảnh bài tập</h2>
-      <p className="text-sm font-medium text-slate-500 mb-8 px-4">Nhận lời giải chi tiết và từng bước giải ngay lập tức</p>
+      <h2 className="text-xl font-extrabold text-slate-800 mt-2 mb-1">📸 Chụp ảnh bài tập</h2>
+      <p className="text-sm font-medium text-slate-500 mb-6">Nhận lời giải chi tiết ngay lập tức</p>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3">
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="flex flex-col items-center justify-center bg-white/50 hover:bg-white/90 border border-blue-100/50 rounded-3xl p-6 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1"
+          className="clay-btn clay-btn-primary flex flex-col items-center justify-center gap-2 !rounded-2xl !py-5 cursor-pointer"
+          aria-label="Tải ảnh lên"
         >
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-2xl shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 ring-1 ring-blue-100">
-            <Upload className="text-blue-500" size={26} strokeWidth={2.5} />
+          <div className="bg-white/20 p-2.5 rounded-xl">
+            <Upload size={28} strokeWidth={2.5} className="text-white" />
           </div>
-          <span className="font-bold text-slate-700 text-sm group-hover:text-blue-600 transition-colors">Tải ảnh lên</span>
+          <span className="text-sm font-bold text-white">Tải ảnh lên</span>
         </button>
 
         <button
-          onClick={() => fileInputRef.current?.click()}
-          className="flex flex-col items-center justify-center bg-white/50 hover:bg-white/90 border border-purple-100/50 rounded-3xl p-6 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1"
+          onClick={() => cameraInputRef.current?.click()}
+          className="clay-btn clay-btn-cta flex flex-col items-center justify-center gap-2 !rounded-2xl !py-5 cursor-pointer"
+          aria-label="Chụp ảnh"
         >
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-2xl shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 ring-1 ring-purple-100">
-            <Camera className="text-purple-500" size={26} strokeWidth={2.5} />
+          <div className="bg-white/20 p-2.5 rounded-xl">
+            <Camera size={28} strokeWidth={2.5} className="text-white" />
           </div>
-          <span className="font-bold text-slate-700 text-sm group-hover:text-purple-600 transition-colors">Chụp ảnh</span>
+          <span className="text-sm font-bold text-white">Chụp ảnh</span>
         </button>
       </div>
 
@@ -50,10 +53,18 @@ export default function UploadSection({ onImageSelect }: UploadSectionProps) {
         accept="image/*"
         className="hidden"
       />
+      <input
+        type="file"
+        ref={cameraInputRef}
+        onChange={handleFileChange}
+        accept="image/*"
+        capture="environment"
+        className="hidden"
+      />
 
-      <div className="mt-8 inline-flex items-center px-4 py-2 rounded-full bg-slate-100/50 text-[11px] font-semibold tracking-wide text-slate-400 border border-slate-200/50">
-        HỖ TRỢ JPG, PNG &bull; TỐI ĐA 10MB
-      </div>
+      <p className="mt-5 text-xs font-semibold text-slate-400 tracking-wide">
+        Hỗ trợ JPG, PNG • Tối đa 10MB
+      </p>
     </div>
   );
 }

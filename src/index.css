@@ -1,54 +1,217 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
-:root {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --bg-color: #f8fafc;
+@theme {
+  --font-sans: "Baloo 2", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #2563EB;
+  --color-primary-light: #3B82F6;
+  --color-cta: #F97316;
+  --color-cta-light: #FB923C;
+  --color-bg: #F0F4FF;
+  --color-surface: #FFFFFF;
+  --color-text: #1E293B;
+  --color-text-muted: #475569;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: #1e293b;
+  font-family: 'Baloo 2', system-ui, -apple-system, sans-serif;
+  background-color: #F0F4FF;
+  color: #1E293B;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* ===== CLAYMORPHISM DESIGN SYSTEM ===== */
+
+/* Clay Card: soft 3D with inner + outer shadows, thick border */
+.clay-card {
+  background: #FFFFFF;
+  border: 3px solid #E2E8F0;
+  border-radius: 24px;
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.06),
+    -4px -4px 12px rgba(255, 255, 255, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.clay-card-colored {
+  border-radius: 24px;
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.08),
+    -4px -4px 12px rgba(255, 255, 255, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Clay Button: thick border, chunky, bubbly */
+.clay-btn {
+  border: 3px solid transparent;
+  border-radius: 16px;
+  font-weight: 700;
+  padding: 14px 24px;
+  min-height: 48px;
+  transition: all 200ms ease-out;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.08),
+    -3px -3px 8px rgba(255, 255, 255, 0.6),
+    inset 0 2px 3px rgba(255, 255, 255, 0.4);
+}
+
+.clay-btn:active {
+  transform: scale(0.96);
+  box-shadow:
+    2px 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clay-btn-primary {
+  background: #2563EB;
+  border-color: #1D4ED8;
+  color: white;
+}
+
+.clay-btn-primary:hover {
+  background: #1D4ED8;
+}
+
+.clay-btn-cta {
+  background: #F97316;
+  border-color: #EA580C;
+  color: white;
+}
+
+.clay-btn-cta:hover {
+  background: #EA580C;
+}
+
+.clay-btn-ghost {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #475569;
+}
+
+.clay-btn-ghost:hover {
+  background: #E2E8F0;
+}
+
+/* Clay Input */
+.clay-input {
+  background: #F8FAFC;
+  border: 3px solid #CBD5E1;
+  border-radius: 16px;
+  padding: 14px 16px;
+  min-height: 48px;
+  font-size: 16px;
+  /* Prevents zoom on iOS */
+  transition: border-color 200ms;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.clay-input:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.15),
+    inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Clay Badge */
+.clay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Background pattern for education app */
+.edu-bg {
+  background-color: #F0F4FF;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
+  background-color: #CBD5E1;
   border-radius: 20px;
 }
 
-@layer utilities {
-  .cherry-blossom-bg {
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(320,100%,96%,0.4) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(240,100%,97%,0.5) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(280,100%,96%,0.4) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(210,100%,96%,0.5) 0px, transparent 50%);
-    background-attachment: fixed;
+/* Safe area for iPhone notch */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
-/* markdown styles for generated response */
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Markdown styles */
 .prose h3 {
   color: #1e293b;
   font-weight: 700;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
 }
 
 .prose p {
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   line-height: 1.7;
 }
 
@@ -57,50 +220,12 @@ body {
   font-weight: 700;
 }
 
-.prose ul, .prose ol {
-  margin-bottom: 1em;
+.prose ul,
+.prose ol {
+  margin-bottom: 0.8em;
   padding-left: 1.5em;
 }
 
 .prose li {
-  margin-bottom: 0.5em;
-}
-
-/* Beautiful Markdown Tables */
-.prose table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 2rem;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  border: 1px solid #e2e8f0;
-}
-
-.prose th {
-  background-color: #f8fafc;
-  color: #334155;
-  font-weight: 700;
-  text-align: left;
-  padding: 1rem 1.25rem;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.prose td {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid #f1f5f9;
-  color: #475569;
-}
-
-.prose tr:last-child td {
-  border-bottom: none;
-}
-
-.prose tr:hover td {
-  background-color: #f8fafc;
-}
-
-.animate-spin-slow {
-  animation: spin 3s linear infinite;
+  margin-bottom: 0.4em;
 }

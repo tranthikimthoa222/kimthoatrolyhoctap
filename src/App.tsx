@@ -121,7 +121,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 cherry-blossom-bg font-sans pb-12">
+    <div className="min-h-screen edu-bg font-sans pb-12 safe-bottom">
       <Header onOpenSettings={() => setIsSettingsOpen(true)} />
 
       <SettingsModal
@@ -133,23 +133,23 @@ export default function App() {
         isInitialSetup={isInitialSetup}
       />
 
-      <main className="max-w-md mx-auto px-4 pt-6">
+      <main className="max-w-md mx-auto px-3 pt-4">
         <AnimatePresence mode="wait">
           {screen === 'home' && (
             <motion.div
               key="home"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-8"
+              exit={{ opacity: 0, y: -15 }}
+              className="space-y-5"
             >
               <AuthorProfile />
 
-              <div className="text-center space-y-2 py-4">
-                <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">
+              <div className="text-center space-y-1 py-2">
+                <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">
                   Học tập <span className="text-blue-500">thông minh</span>
                 </h2>
-                <p className="text-slate-500">Chụp ảnh bài tập – Nhận lời giải ngay!</p>
+                <p className="text-sm font-medium text-slate-500">Chụp ảnh bài tập – Nhận lời giải ngay!</p>
               </div>
 
               <UploadSection onImageSelect={handleImageSelect} />
@@ -164,10 +164,11 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-3xl shadow-xl p-6 border border-slate-100"
+              className="clay-card p-5"
             >
-              <h3 className="font-bold text-lg text-slate-800 mb-4 text-center">Xác nhận ảnh</h3>
-              <div className="relative rounded-xl overflow-hidden shadow-sm mb-6 bg-slate-100 aspect-[3/4]">
+              <h3 className="font-extrabold text-lg text-slate-800 mb-4 text-center">Xác nhận ảnh</h3>
+              <div className="rounded-2xl overflow-hidden mb-5 bg-slate-50 aspect-[3/4] border-2 border-slate-100"
+                style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.04)' }}>
                 <img
                   src={imagePreviewUrl}
                   alt="Preview"
@@ -175,17 +176,17 @@ export default function App() {
                 />
               </div>
 
-              <div className="flex space-x-3">
+              <div className="flex gap-3">
                 <button
                   onClick={handleCancelPreview}
-                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl flex items-center justify-center space-x-2 transition-colors"
+                  className="flex-1 clay-btn clay-btn-ghost flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <X size={20} />
                   <span>Hủy</span>
                 </button>
                 <button
                   onClick={handleAnalyze}
-                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-blue-200 transition-colors"
+                  className="flex-1 clay-btn clay-btn-cta flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Check size={20} />
                   <span>Giải bài</span>
