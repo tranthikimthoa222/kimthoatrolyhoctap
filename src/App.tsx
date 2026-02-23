@@ -6,6 +6,7 @@ import SolutionCard from './components/SolutionCard';
 import ComparisonTable from './components/ComparisonTable';
 import SettingsModal from './components/SettingsModal';
 import AuthorProfile from './components/AuthorProfile';
+import LoginScreen from './components/LoginScreen';
 import { analyzeImage, SolutionResponse } from './services/gemini';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Check } from 'lucide-react';
@@ -13,6 +14,7 @@ import { X, Check } from 'lucide-react';
 type Screen = 'home' | 'preview' | 'analyzing' | 'solution';
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(() => localStorage.getItem('tro_ly_logged_in') === 'true');
   const [screen, setScreen] = useState<Screen>('home');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
@@ -20,6 +22,10 @@ export default function App() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isInitialSetup, setIsInitialSetup] = useState(false);
+
+  if (!isLoggedIn) {
+    return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
