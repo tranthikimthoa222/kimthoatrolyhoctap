@@ -1,0 +1,5 @@
+{
+  "name": "Trợ Lý AI Học Tập",
+  "description": "AI Study Assistant for students - Solve math problems instantly",
+  "requestFramePermissions": ["camera", "microphone"]
+}

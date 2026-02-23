@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --bg-color: #f8fafc;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 20px;
+}
+
+@layer utilities {
+  .cherry-blossom-bg {
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(320,100%,96%,0.4) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(240,100%,97%,0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(280,100%,96%,0.4) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(210,100%,96%,0.5) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* markdown styles for generated response */
+.prose h3 {
+  color: #1e293b;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose p {
+  margin-bottom: 1em;
+  line-height: 1.7;
+}
+
+.prose strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+/* Beautiful Markdown Tables */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+}
+
+.prose th {
+  background-color: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.prose td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr:hover td {
+  background-color: #f8fafc;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
